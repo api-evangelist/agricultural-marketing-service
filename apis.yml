@@ -5,20 +5,20 @@ name: Agricultural Marketing Service
 tags:
   - Federal Government
   - Agriculture
-type: Index
+type: Contract
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 created: '2024-11-21'
-modified: '2024-12-15'
-position: Consumer
+modified: '2024-12-21'
+position: Consuming
 description: >-
-  The Agricultural Marketing Service (AMS) is an agency of the United States
-  Department of Agriculture; it maintains programs in five commodity areas:[4]
-  cotton and tobacco; dairy; fruit and vegetable; livestock and seed; and
-  poultry. These programs provide testing, standardization, grading and market
-  news services for those commodities, and oversee marketing agreements and
-  orders, administer research and promotion programs, and purchase commodities
-  for federal food programs. 
+  The Agricultural Marketing Service (AMS), an agency of the United States
+  Department of Agriculture, oversees programs in five commodity areas: cotton
+  and tobacco, dairy, fruits and vegetables, livestock and seeds, and poultry.
+  AMS provides testing, standardization, grading, and market news services for
+  these commodities. It also manages marketing agreements and orders,
+  administers research and promotion programs, and purchases commodities for
+  federal food programs.
 maintainers:
   - FN: Kin Lane
     email: info@apievangelist.com
