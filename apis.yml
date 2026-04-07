@@ -5,8 +5,8 @@ name: Agricultural Marketing Service
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - Federal Government
   - Agriculture
+  - Federal Government
 description: >-
   The Agricultural Marketing Service (AMS), an agency of the United States
   Department of Agriculture, oversees programs in five commodity areas: cotton
