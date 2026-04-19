@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/agricultural-marketing-service/refs/heads/main/json-structure/mars-api-offices-list-response-structure.json",
+  "name": "Offices List Response",
+  "description": "List of USDA AMS market news offices.",
+  "type": "object",
+  "properties": {
+    "results": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Office"
+      }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/agricultural-marketing-service/refs/heads/main/json-structure/mars-api-office-structure.json",
+  "name": "Office",
+  "description": "A USDA AMS market news office.",
+  "type": "object",
+  "properties": {
+    "office_id": {
+      "type": "string",
+      "description": "Unique identifier for the office.",
+      "example": "NAT"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the market news office.",
+      "example": "National"
+    },
+    "city": {
+      "type": "string",
+      "description": "City where the office is located.",
+      "example": "Washington"
+    },
+    "state": {
+      "type": "string",
+      "description": "State where the office is located.",
+      "example": "DC"
+    },
+    "commodities": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of commodities covered by this office.",
+      "example": [
+        "Cattle",
+        "Hogs",
+        "Dairy"
+      ]
+    }
+  }
+}

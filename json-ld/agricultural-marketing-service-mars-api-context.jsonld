@@ -1,0 +1,120 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "ams": "https://ams.usda.gov/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "Report": "ams:Report",
+    "slugId": {
+      "@id": "ams:slug_id",
+      "@type": "xsd:string"
+    },
+    "slugName": {
+      "@id": "ams:slug_name",
+      "@type": "xsd:string"
+    },
+    "reportDate": {
+      "@id": "ams:report_date",
+      "@type": "xsd:date"
+    },
+    "publishedDate": {
+      "@id": "ams:published_date",
+      "@type": "xsd:dateTime"
+    },
+    "commodity": {
+      "@id": "ams:commodity",
+      "@type": "xsd:string"
+    },
+    "marketType": {
+      "@id": "ams:market_type",
+      "@type": "xsd:string"
+    },
+    "office": {
+      "@id": "ams:office",
+      "@type": "xsd:string"
+    },
+    "sectionName": {
+      "@id": "ams:section_name",
+      "@type": "xsd:string"
+    },
+    "Office": "ams:Office",
+    "officeId": {
+      "@id": "ams:office_id",
+      "@type": "xsd:string"
+    },
+    "name": "schema:name",
+    "city": {
+      "@id": "ams:city",
+      "@type": "xsd:string"
+    },
+    "state": {
+      "@id": "ams:state",
+      "@type": "xsd:string"
+    },
+    "commodities": {
+      "@id": "ams:commodities",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "Reports List Response": "ams:Reports List Response",
+    "results": {
+      "@id": "ams:results",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "stats": {
+      "@id": "ams:stats",
+      "@type": "xsd:string"
+    },
+    "Report Data Response": "ams:Report Data Response",
+    "Report Data": "ams:Report Data",
+    "class": {
+      "@id": "ams:class",
+      "@type": "xsd:string"
+    },
+    "grade": {
+      "@id": "ams:grade",
+      "@type": "xsd:string"
+    },
+    "headCount": {
+      "@id": "ams:head_count",
+      "@type": "xsd:integer"
+    },
+    "pricePerCwt": {
+      "@id": "ams:price_per_cwt",
+      "@type": "xsd:double"
+    },
+    "priceUnit": {
+      "@id": "ams:price_unit",
+      "@type": "xsd:string"
+    },
+    "region": {
+      "@id": "ams:region",
+      "@type": "xsd:string"
+    },
+    "Error Response": "ams:Error Response",
+    "error": {
+      "@id": "ams:error",
+      "@type": "xsd:string"
+    },
+    "message": {
+      "@id": "ams:message",
+      "@type": "xsd:string"
+    },
+    "status": {
+      "@id": "ams:status",
+      "@type": "xsd:integer"
+    },
+    "Offices List Response": "ams:Offices List Response",
+    "Pagination Stats": "ams:Pagination Stats",
+    "count": {
+      "@id": "ams:count",
+      "@type": "xsd:integer"
+    },
+    "total": {
+      "@id": "ams:total",
+      "@type": "xsd:integer"
+    }
+  }
+}

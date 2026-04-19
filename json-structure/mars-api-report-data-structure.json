@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/agricultural-marketing-service/refs/heads/main/json-structure/mars-api-report-data-structure.json",
+  "name": "Report Data",
+  "description": "Detailed commodity price and market data from a report.",
+  "type": "object",
+  "properties": {
+    "slug_id": {
+      "type": "string",
+      "description": "Unique identifier for the report.",
+      "example": "2451"
+    },
+    "slug_name": {
+      "type": "string",
+      "description": "Name of the report.",
+      "example": "National Weekly Cattle Summary"
+    },
+    "report_date": {
+      "type": "date",
+      "description": "Date the report data covers.",
+      "example": "2026-04-18"
+    },
+    "published_date": {
+      "type": "datetime",
+      "description": "Date the report was published.",
+      "example": "2026-04-18T16:00:00Z"
+    },
+    "commodity": {
+      "type": "string",
+      "description": "Agricultural commodity.",
+      "example": "Cattle"
+    },
+    "class": {
+      "type": "string",
+      "description": "Class or category within the commodity.",
+      "example": "Slaughter"
+    },
+    "grade": {
+      "type": "string",
+      "description": "Grade or quality designation.",
+      "example": "Choice"
+    },
+    "head_count": {
+      "type": "int32",
+      "description": "Number of head (animals) in the report.",
+      "example": 45000
+    },
+    "price_per_cwt": {
+      "type": "double",
+      "description": "Price per hundredweight (CWT).",
+      "example": 185.5
+    },
+    "price_unit": {
+      "type": "string",
+      "description": "Unit of price measurement.",
+      "example": "CWT"
+    },
+    "region": {
+      "type": "string",
+      "description": "Geographic region covered.",
+      "example": "National"
+    }
+  }
+}

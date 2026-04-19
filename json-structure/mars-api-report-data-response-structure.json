@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/agricultural-marketing-service/refs/heads/main/json-structure/mars-api-report-data-response-structure.json",
+  "name": "Report Data Response",
+  "description": "Response containing detailed report data.",
+  "type": "object",
+  "properties": {
+    "results": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ReportData"
+      }
+    },
+    "stats": {
+      "$ref": "#/components/schemas/PaginationStats"
+    }
+  }
+}

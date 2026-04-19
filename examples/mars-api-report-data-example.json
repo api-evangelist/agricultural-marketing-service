@@ -1,0 +1,13 @@
+{
+  "slug_id": "2451",
+  "slug_name": "National Weekly Cattle Summary",
+  "report_date": "2026-04-18",
+  "published_date": "2026-04-18T16:00:00Z",
+  "commodity": "Cattle",
+  "class": "Slaughter",
+  "grade": "Choice",
+  "head_count": 45000,
+  "price_per_cwt": 185.5,
+  "price_unit": "CWT",
+  "region": "National"
+}

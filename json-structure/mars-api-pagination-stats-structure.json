@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/agricultural-marketing-service/refs/heads/main/json-structure/mars-api-pagination-stats-structure.json",
+  "name": "Pagination Stats",
+  "description": "Pagination metadata for list responses.",
+  "type": "object",
+  "properties": {
+    "count": {
+      "type": "int32",
+      "description": "Number of records in this response.",
+      "example": 100
+    },
+    "total": {
+      "type": "int32",
+      "description": "Total number of records matching the query.",
+      "example": 500
+    }
+  }
+}

@@ -1,0 +1,473 @@
+openapi: 3.0.3
+info:
+  title: USDA AMS MARS API (MyMarketNews)
+  description: >-
+    The Market Analysis Reporting System (MARS) API provides programmatic
+    access to USDA Agricultural Marketing Service agricultural market news data.
+    The API allows users to automatically pull raw market news data including
+    commodity prices, volume, and trade reports across livestock, dairy, fruits,
+    vegetables, grains, and other agricultural commodities. Authentication via
+    Basic auth with an API key is supported for registered users; no key is
+    required for public access. All responses are in JSON format.
+  version: v1.2
+  contact:
+    url: https://mymarketnews.ams.usda.gov
+  x-generated-from: documentation
+servers:
+  - url: https://marsapi.ams.usda.gov/services/v1.2
+    description: MARS API v1.2
+  - url: https://marsapi.ams.usda.gov/services/v3.0
+    description: MARS API v3.0
+tags:
+  - name: Reports
+    description: Agricultural market news reports across all commodity types
+  - name: Offices
+    description: USDA AMS market news offices
+paths:
+  /reports:
+    get:
+      operationId: listReports
+      summary: USDA AMS List Reports
+      description: >-
+        Returns a list of all available market news reports. Each report
+        has a unique Slug_ID and Slug_Name that serve as identifiers.
+        Reports cover livestock, dairy, fruits, vegetables, grains, cotton,
+        tobacco, poultry, and other agricultural commodities.
+      tags:
+        - Reports
+      parameters:
+        - name: q
+          in: query
+          description: Search query to filter reports by name or description.
+          required: false
+          schema:
+            type: string
+            example: cattle
+        - name: allSections
+          in: query
+          description: Return all report sections (true/false).
+          required: false
+          schema:
+            type: boolean
+            example: true
+        - name: dateType
+          in: query
+          description: Date type to filter by (published, report).
+          required: false
+          schema:
+            type: string
+            enum:
+              - published
+              - report
+            example: published
+        - name: startDate
+          in: query
+          description: Start date for filtering reports (YYYY-MM-DD).
+          required: false
+          schema:
+            type: string
+            format: date
+            example: '2026-01-01'
+        - name: endDate
+          in: query
+          description: End date for filtering reports (YYYY-MM-DD). Maximum 180 days from startDate.
+          required: false
+          schema:
+            type: string
+            format: date
+            example: '2026-04-19'
+        - name: slug_id
+          in: query
+          description: Filter by specific report slug ID.
+          required: false
+          schema:
+            type: string
+            example: '2451'
+        - name: class
+          in: query
+          description: Filter by commodity class (e.g., Livestock, Dairy, Fruit/Veg).
+          required: false
+          schema:
+            type: string
+            example: Livestock
+        - name: limit
+          in: query
+          description: Maximum number of records to return (max 100000).
+          required: false
+          schema:
+            type: integer
+            maximum: 100000
+            example: 100
+        - name: offset
+          in: query
+          description: Number of records to skip for pagination.
+          required: false
+          schema:
+            type: integer
+            example: 0
+        - name: sort_by
+          in: query
+          description: Field to sort results by.
+          required: false
+          schema:
+            type: string
+            example: published_date
+        - name: sort_order
+          in: query
+          description: Sort order (asc or desc).
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+            example: desc
+      responses:
+        '200':
+          description: A list of market news reports.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportsListResponse'
+              examples:
+                ListReports200Example:
+                  summary: Default listReports 200 response
+                  x-microcks-default: true
+                  value:
+                    results:
+                      - slug_id: '2451'
+                        slug_name: National Weekly Cattle Summary
+                        report_date: '2026-04-18'
+                        published_date: '2026-04-18T16:00:00Z'
+                        commodity: Cattle
+                        market_type: Weekly Summary
+                        office: National
+                        section_name: All Classes
+                    stats:
+                      count: 1
+                      total: 500
+        '400':
+          description: Bad request. Invalid query parameters.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized. Invalid API key.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /reports/{slug_id}:
+    get:
+      operationId: getReport
+      summary: USDA AMS Get Report
+      description: >-
+        Returns market news data for a specific report identified by its
+        unique slug_id. Returns the full report data including commodity
+        prices, volumes, and trade information.
+      tags:
+        - Reports
+      parameters:
+        - name: slug_id
+          in: path
+          description: Unique identifier (Slug_ID) for the market news report.
+          required: true
+          schema:
+            type: string
+            example: '2451'
+        - name: startDate
+          in: query
+          description: Start date for filtering data within the report (YYYY-MM-DD).
+          required: false
+          schema:
+            type: string
+            format: date
+            example: '2026-01-01'
+        - name: endDate
+          in: query
+          description: End date for filtering data (YYYY-MM-DD). Maximum 180 days from startDate.
+          required: false
+          schema:
+            type: string
+            format: date
+            example: '2026-04-19'
+        - name: limit
+          in: query
+          description: Maximum records to return.
+          required: false
+          schema:
+            type: integer
+            maximum: 100000
+            example: 100
+        - name: offset
+          in: query
+          description: Number of records to skip.
+          required: false
+          schema:
+            type: integer
+            example: 0
+      responses:
+        '200':
+          description: Report data with commodity prices and market information.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportDataResponse'
+              examples:
+                GetReport200Example:
+                  summary: Default getReport 200 response
+                  x-microcks-default: true
+                  value:
+                    results:
+                      - slug_id: '2451'
+                        slug_name: National Weekly Cattle Summary
+                        report_date: '2026-04-18'
+                        published_date: '2026-04-18T16:00:00Z'
+                        commodity: Cattle
+                        class: Slaughter
+                        grade: Choice
+                        head_count: 45000
+                        price_per_cwt: 185.50
+                        price_unit: CWT
+                        region: National
+                    stats:
+                      count: 1
+                      total: 1
+        '404':
+          description: Report not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /offices:
+    get:
+      operationId: listOffices
+      summary: USDA AMS List Offices
+      description: Returns a list of USDA AMS market news offices that publish market reports.
+      tags:
+        - Offices
+      responses:
+        '200':
+          description: A list of market news offices.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfficesListResponse'
+              examples:
+                ListOffices200Example:
+                  summary: Default listOffices 200 response
+                  x-microcks-default: true
+                  value:
+                    results:
+                      - office_id: 'NAT'
+                        name: National
+                        city: Washington
+                        state: DC
+                        commodities:
+                          - Cattle
+                          - Hogs
+                          - Dairy
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+      description: >-
+        API key obtained from USDA AMS MyMarketNews registration. Use the API
+        key as the username with an empty password, or encode as Base64 for
+        Bearer auth. Public access without authentication is also available
+        with lower rate limits.
+  schemas:
+    Report:
+      type: object
+      title: Report
+      description: A USDA AMS market news report entry.
+      properties:
+        slug_id:
+          type: string
+          description: Unique identifier for the report.
+          example: '2451'
+        slug_name:
+          type: string
+          description: Unique name for the report.
+          example: National Weekly Cattle Summary
+        report_date:
+          type: string
+          format: date
+          description: Date the report data covers.
+          example: '2026-04-18'
+        published_date:
+          type: string
+          format: date-time
+          description: Date and time the report was published.
+          example: '2026-04-18T16:00:00Z'
+        commodity:
+          type: string
+          description: Agricultural commodity covered by the report.
+          example: Cattle
+        market_type:
+          type: string
+          description: Type of market covered (Weekly Summary, Daily, etc.).
+          example: Weekly Summary
+        office:
+          type: string
+          description: USDA AMS office that published the report.
+          example: National
+        section_name:
+          type: string
+          description: Section name within the report.
+          example: All Classes
+    ReportsListResponse:
+      type: object
+      title: Reports List Response
+      description: Paginated list of market news reports.
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Report'
+        stats:
+          $ref: '#/components/schemas/PaginationStats'
+    ReportData:
+      type: object
+      title: Report Data
+      description: Detailed commodity price and market data from a report.
+      properties:
+        slug_id:
+          type: string
+          description: Unique identifier for the report.
+          example: '2451'
+        slug_name:
+          type: string
+          description: Name of the report.
+          example: National Weekly Cattle Summary
+        report_date:
+          type: string
+          format: date
+          description: Date the report data covers.
+          example: '2026-04-18'
+        published_date:
+          type: string
+          format: date-time
+          description: Date the report was published.
+          example: '2026-04-18T16:00:00Z'
+        commodity:
+          type: string
+          description: Agricultural commodity.
+          example: Cattle
+        class:
+          type: string
+          description: Class or category within the commodity.
+          example: Slaughter
+        grade:
+          type: string
+          description: Grade or quality designation.
+          example: Choice
+        head_count:
+          type: integer
+          description: Number of head (animals) in the report.
+          example: 45000
+        price_per_cwt:
+          type: number
+          format: double
+          description: Price per hundredweight (CWT).
+          example: 185.50
+        price_unit:
+          type: string
+          description: Unit of price measurement.
+          example: CWT
+        region:
+          type: string
+          description: Geographic region covered.
+          example: National
+    ReportDataResponse:
+      type: object
+      title: Report Data Response
+      description: Response containing detailed report data.
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReportData'
+        stats:
+          $ref: '#/components/schemas/PaginationStats'
+    Office:
+      type: object
+      title: Office
+      description: A USDA AMS market news office.
+      properties:
+        office_id:
+          type: string
+          description: Unique identifier for the office.
+          example: NAT
+        name:
+          type: string
+          description: Name of the market news office.
+          example: National
+        city:
+          type: string
+          description: City where the office is located.
+          example: Washington
+        state:
+          type: string
+          description: State where the office is located.
+          example: DC
+        commodities:
+          type: array
+          items:
+            type: string
+          description: List of commodities covered by this office.
+          example:
+            - Cattle
+            - Hogs
+            - Dairy
+    OfficesListResponse:
+      type: object
+      title: Offices List Response
+      description: List of USDA AMS market news offices.
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Office'
+    PaginationStats:
+      type: object
+      title: Pagination Stats
+      description: Pagination metadata for list responses.
+      properties:
+        count:
+          type: integer
+          description: Number of records in this response.
+          example: 100
+        total:
+          type: integer
+          description: Total number of records matching the query.
+          example: 500
+    ErrorResponse:
+      type: object
+      title: Error Response
+      description: Standard error response from the MARS API.
+      properties:
+        error:
+          type: string
+          description: Error type or code.
+          example: invalid_parameter
+        message:
+          type: string
+          description: Human-readable error message.
+          example: The requested resource was not found.
+        status:
+          type: integer
+          description: HTTP status code.
+          example: 404
+security: []

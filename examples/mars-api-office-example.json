@@ -1,0 +1,11 @@
+{
+  "office_id": "NAT",
+  "name": "National",
+  "city": "Washington",
+  "state": "DC",
+  "commodities": [
+    "Cattle",
+    "Hogs",
+    "Dairy"
+  ]
+}

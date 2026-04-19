@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/agricultural-marketing-service/refs/heads/main/json-schema/mars-api-error-response-schema.json",
+  "title": "Error Response",
+  "description": "Standard error response from the MARS API.",
+  "type": "object",
+  "properties": {
+    "error": {
+      "type": "string",
+      "description": "Error type or code.",
+      "example": "invalid_parameter"
+    },
+    "message": {
+      "type": "string",
+      "description": "Human-readable error message.",
+      "example": "The requested resource was not found."
+    },
+    "status": {
+      "type": "integer",
+      "description": "HTTP status code.",
+      "example": 404
+    }
+  }
+}

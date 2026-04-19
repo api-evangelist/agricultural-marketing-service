@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/agricultural-marketing-service/refs/heads/main/json-schema/mars-api-reports-list-response-schema.json",
+  "title": "Reports List Response",
+  "description": "Paginated list of market news reports.",
+  "type": "object",
+  "properties": {
+    "results": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Report"
+      }
+    },
+    "stats": {
+      "$ref": "#/components/schemas/PaginationStats"
+    }
+  }
+}

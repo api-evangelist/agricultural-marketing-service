@@ -1,0 +1,169 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: USDA Agricultural Marketing Service
+  description: >-
+    Unified vocabulary for USDA Agricultural Marketing Service APIs covering
+    agricultural market news, commodity prices, livestock reporting, and local food directories.
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+operational:
+  apis:
+    - name: MARS API (MyMarketNews)
+      namespace: mars
+      version: v1.2
+      baseUrl: https://marsapi.ams.usda.gov/services/v1.2
+      status: active
+    - name: LMPRS API
+      namespace: lmprs
+      version: v1
+      baseUrl: https://mpr.datamart.ams.usda.gov
+      status: active
+    - name: Local Food Directories API
+      namespace: localfood
+      version: v1
+      baseUrl: https://www.usdalocalfoodportal.com/api
+      status: active
+
+  resources:
+    - name: reports
+      description: Agricultural market news reports covering commodities, prices, and volumes
+      api: mars
+      actions:
+        - list
+        - get
+    - name: offices
+      description: USDA AMS market news offices that publish reports
+      api: mars
+      actions:
+        - list
+
+  actions:
+    - name: list
+      description: Retrieve a collection of resources with optional filtering
+      httpMethod: GET
+      pattern: read
+    - name: get
+      description: Retrieve a specific resource by identifier
+      httpMethod: GET
+      pattern: read
+
+  schemas:
+    core:
+      - Report
+      - ReportData
+      - Office
+    responses:
+      - ReportsListResponse
+      - ReportDataResponse
+      - OfficesListResponse
+      - PaginationStats
+    errors:
+      - ErrorResponse
+
+  parameters:
+    pagination:
+      - name: limit
+        description: Maximum records per request (max 100,000)
+      - name: offset
+        description: Number of records to skip
+    identifiers:
+      - name: slug_id
+        description: Unique identifier for a market news report
+      - name: slug_name
+        description: Unique name for a market news report
+    filters:
+      - name: q
+        description: Text search query
+      - name: startDate
+        description: Start date for filtering (YYYY-MM-DD)
+      - name: endDate
+        description: End date for filtering (YYYY-MM-DD, max 180 days from startDate)
+      - name: class
+        description: Commodity class filter
+      - name: dateType
+        description: Date type for filtering (published, report)
+      - name: sort_by
+        description: Field to sort results by
+      - name: sort_order
+        description: Sort direction (asc, desc)
+
+  enums:
+    commodity_class:
+      - Livestock
+      - Dairy
+      - Fruit/Veg
+      - Grains
+      - Cotton
+      - Tobacco
+      - Poultry
+    date_type:
+      - published
+      - report
+    sort_order:
+      - asc
+      - desc
+
+  authentication:
+    schemes:
+      - name: BasicAuth
+        type: basic
+        description: API key as username with empty password; public access also available
+        apis:
+          - mars
+
+capability:
+  workflows: []
+  personas:
+    - id: agricultural-analyst
+      name: Agricultural Analyst
+      description: Researchers and analysts monitoring commodity prices and market trends
+      workflows: []
+    - id: commodity-trader
+      name: Commodity Trader
+      description: Traders using market news data for pricing and procurement decisions
+      workflows: []
+    - id: policy-researcher
+      name: Policy Researcher
+      description: Government and academic researchers studying agricultural markets
+      workflows: []
+
+  domains:
+    - name: Commodity Markets
+      description: Agricultural commodity price reporting and market news
+      resources:
+        - reports
+    - name: Market Administration
+      description: USDA office and administrative data
+      resources:
+        - offices
+    - name: Local Food Systems
+      description: Farmers markets, food hubs, CSAs, and local food directories
+      resources: []
+
+  namespaces:
+    consumed:
+      - name: mars
+        type: http
+        baseUri: https://marsapi.ams.usda.gov/services/v1.2
+    exposed: []
+
+  binds: []
+
+crossReference:
+  - resource: reports
+    operations:
+      - listReports
+      - getReport
+    workflows: []
+    personas:
+      - Agricultural Analyst
+      - Commodity Trader
+      - Policy Researcher
+  - resource: offices
+    operations:
+      - listOffices
+    workflows: []
+    personas:
+      - Agricultural Analyst
