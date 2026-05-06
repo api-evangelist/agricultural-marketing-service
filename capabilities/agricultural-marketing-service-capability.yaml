@@ -1,0 +1,274 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: USDA AMS MARS API (MyMarketNews)
+  description: The Market Analysis Reporting System (MARS) API provides programmatic access to USDA Agricultural Marketing
+    Service agricultural market news data. The API allows users to automatically pull raw market news data including commodity
+    prices, volume, and trade reports across livestock, dairy, fruits, vegetables, grains, and other agricultural commodities.
+    Authentication via Basic auth with an API key is supported for registered users; no key is required for public access.
+    All responses are in JSON format.
+  tags:
+  - Agricultural
+  - Marketing
+  - Service
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: agricultural-marketing-service
+    baseUri: https://marsapi.ams.usda.gov/services/v1.2
+    description: USDA AMS MARS API (MyMarketNews) HTTP API.
+    authentication:
+      type: basic
+      username: '{{AGRICULTURAL_MARKETING_SERVICE_USERNAME}}'
+      password: '{{AGRICULTURAL_MARKETING_SERVICE_PASSWORD}}'
+    resources:
+    - name: reports
+      path: /reports
+      operations:
+      - name: listreports
+        method: GET
+        description: USDA AMS List Reports
+        inputParameters:
+        - name: q
+          in: query
+          type: string
+          description: Search query to filter reports by name or description.
+        - name: allSections
+          in: query
+          type: boolean
+          description: Return all report sections (true/false).
+        - name: dateType
+          in: query
+          type: string
+          description: Date type to filter by (published, report).
+        - name: startDate
+          in: query
+          type: string
+          description: Start date for filtering reports (YYYY-MM-DD).
+        - name: endDate
+          in: query
+          type: string
+          description: End date for filtering reports (YYYY-MM-DD). Maximum 180 days from startDate.
+        - name: slug_id
+          in: query
+          type: string
+          description: Filter by specific report slug ID.
+        - name: class
+          in: query
+          type: string
+          description: Filter by commodity class (e.g., Livestock, Dairy, Fruit/Veg).
+        - name: limit
+          in: query
+          type: integer
+          description: Maximum number of records to return (max 100000).
+        - name: offset
+          in: query
+          type: integer
+          description: Number of records to skip for pagination.
+        - name: sort_by
+          in: query
+          type: string
+          description: Field to sort results by.
+        - name: sort_order
+          in: query
+          type: string
+          description: Sort order (asc or desc).
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: reports-slug-id
+      path: /reports/{slug_id}
+      operations:
+      - name: getreport
+        method: GET
+        description: USDA AMS Get Report
+        inputParameters:
+        - name: slug_id
+          in: path
+          type: string
+          required: true
+          description: Unique identifier (Slug_ID) for the market news report.
+        - name: startDate
+          in: query
+          type: string
+          description: Start date for filtering data within the report (YYYY-MM-DD).
+        - name: endDate
+          in: query
+          type: string
+          description: End date for filtering data (YYYY-MM-DD). Maximum 180 days from startDate.
+        - name: limit
+          in: query
+          type: integer
+          description: Maximum records to return.
+        - name: offset
+          in: query
+          type: integer
+          description: Number of records to skip.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: offices
+      path: /offices
+      operations:
+      - name: listoffices
+        method: GET
+        description: USDA AMS List Offices
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: agricultural-marketing-service-rest
+    description: REST adapter for USDA AMS MARS API (MyMarketNews).
+    resources:
+    - path: /reports
+      name: listreports
+      operations:
+      - method: GET
+        name: listreports
+        description: USDA AMS List Reports
+        call: agricultural-marketing-service.listreports
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /reports/{slug_id}
+      name: getreport
+      operations:
+      - method: GET
+        name: getreport
+        description: USDA AMS Get Report
+        call: agricultural-marketing-service.getreport
+        with:
+          slug_id: rest.slug_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /offices
+      name: listoffices
+      operations:
+      - method: GET
+        name: listoffices
+        description: USDA AMS List Offices
+        call: agricultural-marketing-service.listoffices
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: agricultural-marketing-service-mcp
+    transport: http
+    description: MCP adapter for USDA AMS MARS API (MyMarketNews) for AI agent use.
+    tools:
+    - name: listreports
+      description: USDA AMS List Reports
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: agricultural-marketing-service.listreports
+      with:
+        q: tools.q
+        allSections: tools.allSections
+        dateType: tools.dateType
+        startDate: tools.startDate
+        endDate: tools.endDate
+        slug_id: tools.slug_id
+        class: tools.class
+        limit: tools.limit
+        offset: tools.offset
+        sort_by: tools.sort_by
+        sort_order: tools.sort_order
+      inputParameters:
+      - name: q
+        type: string
+        description: Search query to filter reports by name or description.
+      - name: allSections
+        type: boolean
+        description: Return all report sections (true/false).
+      - name: dateType
+        type: string
+        description: Date type to filter by (published, report).
+      - name: startDate
+        type: string
+        description: Start date for filtering reports (YYYY-MM-DD).
+      - name: endDate
+        type: string
+        description: End date for filtering reports (YYYY-MM-DD). Maximum 180 days from startDate.
+      - name: slug_id
+        type: string
+        description: Filter by specific report slug ID.
+      - name: class
+        type: string
+        description: Filter by commodity class (e.g., Livestock, Dairy, Fruit/Veg).
+      - name: limit
+        type: integer
+        description: Maximum number of records to return (max 100000).
+      - name: offset
+        type: integer
+        description: Number of records to skip for pagination.
+      - name: sort_by
+        type: string
+        description: Field to sort results by.
+      - name: sort_order
+        type: string
+        description: Sort order (asc or desc).
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getreport
+      description: USDA AMS Get Report
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: agricultural-marketing-service.getreport
+      with:
+        slug_id: tools.slug_id
+        startDate: tools.startDate
+        endDate: tools.endDate
+        limit: tools.limit
+        offset: tools.offset
+      inputParameters:
+      - name: slug_id
+        type: string
+        description: Unique identifier (Slug_ID) for the market news report.
+        required: true
+      - name: startDate
+        type: string
+        description: Start date for filtering data within the report (YYYY-MM-DD).
+      - name: endDate
+        type: string
+        description: End date for filtering data (YYYY-MM-DD). Maximum 180 days from startDate.
+      - name: limit
+        type: integer
+        description: Maximum records to return.
+      - name: offset
+        type: integer
+        description: Number of records to skip.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listoffices
+      description: USDA AMS List Offices
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: agricultural-marketing-service.listoffices
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    AGRICULTURAL_MARKETING_SERVICE_USERNAME: AGRICULTURAL_MARKETING_SERVICE_USERNAME
+    AGRICULTURAL_MARKETING_SERVICE_PASSWORD: AGRICULTURAL_MARKETING_SERVICE_PASSWORD
