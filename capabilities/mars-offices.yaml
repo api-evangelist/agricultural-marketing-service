@@ -1,0 +1,71 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: USDA AMS MARS API (MyMarketNews) — Offices
+  description: 'USDA AMS MARS API (MyMarketNews) — Offices. 1 operations. Lead operation: USDA AMS List Offices. Self-contained
+    Naftiko capability covering one Agricultural Marketing Service business surface.'
+  tags:
+  - Agricultural Marketing Service
+  - Offices
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AGRICULTURAL_MARKETING_SERVICE_API_KEY: AGRICULTURAL_MARKETING_SERVICE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: mars-offices
+    baseUri: https://marsapi.ams.usda.gov/services/v1.2
+    description: USDA AMS MARS API (MyMarketNews) — Offices business capability. Self-contained, no shared references.
+    resources:
+    - name: offices
+      path: /offices
+      operations:
+      - name: listoffices
+        method: GET
+        description: USDA AMS List Offices
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: basic
+      username: '{{env.AGRICULTURAL_MARKETING_SERVICE_USER}}'
+      password: '{{env.AGRICULTURAL_MARKETING_SERVICE_PASS}}'
+  exposes:
+  - type: rest
+    namespace: mars-offices-rest
+    port: 8080
+    description: REST adapter for USDA AMS MARS API (MyMarketNews) — Offices. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/offices
+      name: offices
+      description: REST surface for offices.
+      operations:
+      - method: GET
+        name: listoffices
+        description: USDA AMS List Offices
+        call: mars-offices.listoffices
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: mars-offices-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for USDA AMS MARS API (MyMarketNews) — Offices. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: usda-ams-list-offices
+      description: USDA AMS List Offices
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: mars-offices.listoffices
+      outputParameters:
+      - type: object
+        mapping: $.
