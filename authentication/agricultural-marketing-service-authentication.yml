@@ -1,0 +1,15 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/agricultural-marketing-service-mars-api.yaml
+summary:
+  types:
+  - http
+schemes:
+- name: BasicAuth
+  type: http
+  scheme: basic
+  description: API key obtained from USDA AMS MyMarketNews registration. Use the API key as
+    the username with an empty password, or encode as Base64 for Bearer auth. Public access
+    without authentication is also available with lower rate limits.
+  sources:
+  - openapi/agricultural-marketing-service-mars-api.yaml

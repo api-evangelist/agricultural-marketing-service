@@ -102,6 +102,12 @@ apis:
   - type: DataAPI
     url: https://www.usdalocalfoodportal.com/api/
 common:
+- type: DomainSecurity
+  url: security/agricultural-marketing-service-domain-security.yml
+- type: Authentication
+  url: authentication/agricultural-marketing-service-authentication.yml
+- url: https://www.ams.usda.gov/rss.xml
+  type: Blog
 - type: LinkedIn
   url: https://www.linkedin.com/company/amsusda
 - type: Website
