@@ -1,5 +1,23 @@
+# agricultural-marketing-service — Spectral ruleset (strengthened)
+# Plain Spectral. Existing hand-authored rules preserved; measured rules added
+# from this provider's own OpenAPI conventions by strengthen_ruleset.py,
+# then self-validated against the spec.
+#
+# Provenance:
+#   - servers-https-only: 100% of servers already https (error)
+#   - servers-expected-domain: 2/2 servers on usda.gov
+#   - query-params-casing: snake @ 60% (n=15)
+#   - operationid-casing: camel @ 100% (n=3)
+#   - schema-names-casing: pascal @ 100% (n=8)
+#   - schema-properties-casing: snake @ 100% (n=34)
+#   - security: neither global nor consistently per-op — schemes-defined only
+#   - error-schema-defined: ErrorResponse
+#   - pagination params observed: ['limit', 'offset']
+#   - merge: kept 23 existing, added 6 measured, upgraded 0
+#   - added: servers-expected-domain, query-params-casing, schema-names-casing, schema-properties-casing, security-schemes-defined, error-schema-defined
+extends:
+  - spectral:oas
 rules:
-  # INFO / METADATA
   info-title-required:
     description: OpenAPI info must have a title.
     severity: error
@@ -7,7 +25,6 @@ rules:
     then:
       field: title
       function: truthy
-
   info-title-prefix:
     description: API title should start with "USDA AMS".
     severity: warn
@@ -15,8 +32,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: "^USDA AMS"
-
+        match: ^USDA AMS
   info-description-required:
     description: OpenAPI info must have a description.
     severity: warn
@@ -24,7 +40,6 @@ rules:
     then:
       field: description
       function: truthy
-
   info-version-required:
     description: OpenAPI info must have a version.
     severity: error
@@ -32,8 +47,6 @@ rules:
     then:
       field: version
       function: truthy
-
-  # OPENAPI VERSION
   openapi-version-3:
     description: Must use OpenAPI 3.0.x specification.
     severity: error
@@ -42,9 +55,7 @@ rules:
       field: openapi
       function: pattern
       functionOptions:
-        match: "^3\\.0\\."
-
-  # SERVERS
+        match: ^3\.0\.
   servers-defined:
     description: At least one server must be defined.
     severity: error
@@ -52,7 +63,6 @@ rules:
     then:
       field: servers
       function: truthy
-
   servers-https-required:
     description: Server URLs must use HTTPS.
     severity: error
@@ -60,9 +70,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: "^https://"
-
-  # PATHS — NAMING CONVENTIONS
+        match: ^https://
   paths-kebab-case:
     description: Path segments should use kebab-case.
     severity: warn
@@ -70,8 +78,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: "^(/[a-z0-9_{}\\-]+)+$"
-
+        match: ^(/[a-z0-9_{}\-]+)+$
   paths-no-trailing-slash:
     description: Paths must not end with a trailing slash.
     severity: warn
@@ -79,9 +86,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        notMatch: "/$"
-
-  # OPERATIONS
+        notMatch: /$
   operation-summary-required:
     description: Every operation must have a summary.
     severity: error
@@ -89,7 +94,6 @@ rules:
     then:
       field: summary
       function: truthy
-
   operation-summary-prefix:
     description: Operation summaries should start with "USDA AMS".
     severity: warn
@@ -97,8 +101,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: "^USDA AMS"
-
+        match: ^USDA AMS
   operation-description-required:
     description: Every operation must have a description.
     severity: warn
@@ -106,7 +109,6 @@ rules:
     then:
       field: description
       function: truthy
-
   operation-id-required:
     description: Every operation must have an operationId.
     severity: error
@@ -114,7 +116,6 @@ rules:
     then:
       field: operationId
       function: truthy
-
   operation-id-camel-case:
     description: operationId should use camelCase.
     severity: warn
@@ -122,8 +123,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: "^[a-z][a-zA-Z0-9]+$"
-
+        match: ^[a-z][a-zA-Z0-9]+$
   operation-tags-required:
     description: Every operation must have at least one tag.
     severity: warn
@@ -131,8 +131,6 @@ rules:
     then:
       field: tags
       function: truthy
-
-  # PARAMETERS
   parameter-description-required:
     description: Every parameter must have a description.
     severity: warn
@@ -140,7 +138,6 @@ rules:
     then:
       field: description
       function: truthy
-
   parameter-schema-required:
     description: Every parameter must have a schema.
     severity: error
@@ -148,15 +145,12 @@ rules:
     then:
       field: schema
       function: truthy
-
-  # RESPONSES
   response-success-required:
     description: Every operation must define at least one 2xx response.
     severity: error
     given: $.paths[*][get,post,put,patch,delete].responses
     then:
       function: truthy
-
   response-description-required:
     description: Every response must have a description.
     severity: warn
@@ -164,8 +158,6 @@ rules:
     then:
       field: description
       function: truthy
-
-  # SCHEMAS
   schema-description-required:
     description: Top-level component schemas should have a description.
     severity: warn
@@ -173,7 +165,6 @@ rules:
     then:
       field: description
       function: truthy
-
   schema-property-snake-case:
     description: Schema property names should use snake_case.
     severity: warn
@@ -181,9 +172,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: "^[a-z][a-z0-9_]*$"
-
-  # HTTP METHOD CONVENTIONS
+        match: ^[a-z][a-z0-9_]*$
   get-no-request-body:
     description: GET operations must not have a request body.
     severity: error
@@ -191,11 +180,58 @@ rules:
     then:
       field: requestBody
       function: falsy
-
-  # GENERAL QUALITY
   no-empty-descriptions:
     description: Descriptions must not be empty strings.
     severity: warn
     given: $..description
     then:
+      function: truthy
+  servers-expected-domain:
+    description: Server URLs should be on the usda.gov domain.
+    severity: warn
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: usda\.gov
+  query-params-casing:
+    description: Query parameters should be snake_case (the dominant convention in this API).
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].parameters[?(@.in=='query')]
+    then:
+      field: name
+      function: casing
+      functionOptions:
+        type: snake
+  schema-names-casing:
+    description: Component schema names should be PascalCase (the dominant convention in this API).
+    severity: warn
+    given: $.components.schemas
+    then:
+      field: '@key'
+      function: casing
+      functionOptions:
+        type: pascal
+  schema-properties-casing:
+    description: Schema properties should be snake_case (the dominant convention in this API).
+    severity: warn
+    given: $.components.schemas[*].properties
+    then:
+      field: '@key'
+      function: casing
+      functionOptions:
+        type: snake
+  security-schemes-defined:
+    description: Security schemes should be defined in components.
+    severity: warn
+    given: $.components
+    then:
+      field: securitySchemes
+      function: truthy
+  error-schema-defined:
+    description: A shared error schema (ErrorResponse) should be defined for error payloads.
+    severity: warn
+    given: $.components.schemas
+    then:
+      field: ErrorResponse
       function: truthy
