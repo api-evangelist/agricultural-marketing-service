@@ -1,0 +1,95 @@
+openapi: 3.0.3
+info:
+  title: USDA AMS MARS API (MyMarketNews) Offices API
+  description: The Market Analysis Reporting System (MARS) API provides programmatic access to USDA Agricultural Marketing Service agricultural market news data. The API allows users to automatically pull raw market news data including commodity prices, volume, and trade reports across livestock, dairy, fruits, vegetables, grains, and other agricultural commodities. Authentication via Basic auth with an API key is supported for registered users; no key is required for public access. All responses are in JSON format.
+  version: v1.2
+  contact:
+    url: https://mymarketnews.ams.usda.gov
+  x-generated-from: documentation
+servers:
+- url: https://marsapi.ams.usda.gov/services/v1.2
+  description: MARS API v1.2
+- url: https://marsapi.ams.usda.gov/services/v3.0
+  description: MARS API v3.0
+security: []
+tags:
+- name: Offices
+  description: USDA AMS market news offices
+paths:
+  /offices:
+    get:
+      operationId: listOffices
+      summary: USDA AMS List Offices
+      description: Returns a list of USDA AMS market news offices that publish market reports.
+      tags:
+      - Offices
+      responses:
+        '200':
+          description: A list of market news offices.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfficesListResponse'
+              examples:
+                ListOffices200Example:
+                  summary: Default listOffices 200 response
+                  x-microcks-default: true
+                  value:
+                    results:
+                    - office_id: NAT
+                      name: National
+                      city: Washington
+                      state: DC
+                      commodities:
+                      - Cattle
+                      - Hogs
+                      - Dairy
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    OfficesListResponse:
+      type: object
+      title: Offices List Response
+      description: List of USDA AMS market news offices.
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Office'
+    Office:
+      type: object
+      title: Office
+      description: A USDA AMS market news office.
+      properties:
+        office_id:
+          type: string
+          description: Unique identifier for the office.
+          example: NAT
+        name:
+          type: string
+          description: Name of the market news office.
+          example: National
+        city:
+          type: string
+          description: City where the office is located.
+          example: Washington
+        state:
+          type: string
+          description: State where the office is located.
+          example: DC
+        commodities:
+          type: array
+          items:
+            type: string
+          description: List of commodities covered by this office.
+          example:
+          - Cattle
+          - Hogs
+          - Dairy
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+      description: API key obtained from USDA AMS MyMarketNews registration. Use the API key as the username with an empty password, or encode as Base64 for Bearer auth. Public access without authentication is also available with lower rate limits.
