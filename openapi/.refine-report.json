@@ -1,0 +1,16 @@
+{
+  "provider": "agricultural-marketing-service",
+  "sources": [
+    "agricultural-marketing-service-offices-api-openapi.yml",
+    "agricultural-marketing-service-reports-api-openapi.yml"
+  ],
+  "outputs": [
+    "agricultural-marketing-service-offices-api-openapi.yml",
+    "agricultural-marketing-service-reports-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

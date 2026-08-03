@@ -1,0 +1,97 @@
+{
+  "info": {
+    "_postman_id": "691970f5-4e07-43ac-b6b8-c78d98f2d83e",
+    "name": "USDA AMS MARS API (MyMarketNews) Offices API",
+    "description": "The Market Analysis Reporting System (MARS) API provides programmatic access to USDA Agricultural Marketing Service agricultural market news data. The API allows users to automatically pull raw market news data including commodity prices, volume, and trade reports across livestock, dairy, fruits, vegetables, grains, and other agricultural commodities. Authentication via Basic auth with an API key is supported for registered users; no key is required for public access. All responses are in JSON format.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T00:28:46.000Z",
+    "updatedAt": "2026-07-28T00:28:46.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-691970f5-4e07-43ac-b6b8-c78d98f2d83e"
+  },
+  "item": [
+    {
+      "name": "offices",
+      "item": [
+        {
+          "name": "USDA AMS List Offices",
+          "id": "f3042a5f-473b-4462-b7d7-ff9c284dac49",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/offices",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "offices"
+              ]
+            },
+            "description": "Returns a list of USDA AMS market news offices that publish market reports."
+          },
+          "response": [
+            {
+              "id": "b7ff7664-58d8-4e23-b22d-6fd5b9f501c6",
+              "name": "A list of market news offices.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/offices",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "offices"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"results\": [\n    {\n      \"office_id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"commodities\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"office_id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"commodities\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T00:28:47.000Z",
+              "updatedAt": "2026-07-28T00:28:47.000Z",
+              "uid": "35240-b7ff7664-58d8-4e23-b22d-6fd5b9f501c6"
+            }
+          ],
+          "createdAt": "2026-07-28T00:28:47.000Z",
+          "updatedAt": "2026-07-28T00:28:47.000Z",
+          "uid": "35240-f3042a5f-473b-4462-b7d7-ff9c284dac49"
+        }
+      ],
+      "id": "441c0d26-02a6-4690-b4f6-e314a365c7a6",
+      "createdAt": "2026-07-28T00:28:47.000Z",
+      "updatedAt": "2026-07-28T00:28:47.000Z",
+      "uid": "35240-441c0d26-02a6-4690-b4f6-e314a365c7a6"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://marsapi.ams.usda.gov/services/v1.2"
+    }
+  ]
+}
