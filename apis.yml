@@ -76,10 +76,6 @@ apis:
         url: json-structure/mars-api-report-data-structure.json
       - type: JSONLD
         url: json-ld/agricultural-marketing-service-mars-api-context.jsonld
-      - type: X-NaftikoCapability
-        url: capabilities/mars-offices.yaml
-      - type: X-NaftikoCapability
-        url: capabilities/mars-reports.yaml
   - aid: agricultural-marketing-service:agricultural-marketing-service-reports-api
     name: Agricultural Marketing Service Reports API
     description: Agricultural market news reports across all commodity types
@@ -108,10 +104,6 @@ apis:
         url: json-structure/mars-api-report-data-structure.json
       - type: JSONLD
         url: json-ld/agricultural-marketing-service-mars-api-context.jsonld
-      - type: X-NaftikoCapability
-        url: capabilities/mars-offices.yaml
-      - type: X-NaftikoCapability
-        url: capabilities/mars-reports.yaml
   - name: USDA AMS LMPRS API (Livestock Mandatory Price Reporting)
     description: The Livestock Mandatory Price Reporting System (LMPRS) API provides programmatic access to federally mandated livestock price report data. The API requires no authentication for public access and returns JSON data. The LMPRS API covers cattle, hogs, lambs, and other livestock price reporting as required by the Livestock Mandatory Reporting Act.
     humanURL: https://mpr.datamart.ams.usda.gov/
