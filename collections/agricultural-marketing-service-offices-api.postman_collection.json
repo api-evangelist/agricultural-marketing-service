@@ -1,0 +1,102 @@
+{
+  "item": [
+    {
+      "id": "df48c9dd-7b08-4562-a327-808e93ccddb5",
+      "name": "Offices",
+      "description": {
+        "content": "USDA AMS market news offices",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ec0a1d31-61e9-4220-8c00-fe865320f099",
+          "name": "USDA AMS List Offices",
+          "request": {
+            "name": "USDA AMS List Offices",
+            "description": {
+              "content": "Returns a list of USDA AMS market news offices that publish market reports.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "offices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c9004500-ef03-4088-84c9-e5c313754ecc",
+              "name": "A list of market news offices.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "offices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"office_id\": \"NAT\",\n      \"name\": \"National\",\n      \"city\": \"Washington\",\n      \"state\": \"DC\",\n      \"commodities\": [\n        \"Cattle\",\n        \"Hogs\",\n        \"Dairy\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://marsapi.ams.usda.gov/services/v1.2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "76fd1d8d-c6cb-49d5-bfd2-16cb8e024cfd",
+    "name": "USDA AMS MARS API (MyMarketNews) Offices API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Market Analysis Reporting System (MARS) API provides programmatic access to USDA Agricultural Marketing Service agricultural market news data. The API allows users to automatically pull raw market news data including commodity prices, volume, and trade reports across livestock, dairy, fruits, vegetables, grains, and other agricultural commodities. Authentication via Basic auth with an API key is supported for registered users; no key is required for public access. All responses are in JSON format.",
+      "type": "text/plain"
+    }
+  }
+}

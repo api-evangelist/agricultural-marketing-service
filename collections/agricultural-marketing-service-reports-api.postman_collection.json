@@ -1,0 +1,565 @@
+{
+  "item": [
+    {
+      "id": "be6ca66f-a42a-47ea-9771-d2de2b807d1c",
+      "name": "Reports",
+      "description": {
+        "content": "Agricultural market news reports across all commodity types",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0c4a7562-15f8-4bc3-bcc8-109ba3c45811",
+          "name": "USDA AMS List Reports",
+          "request": {
+            "name": "USDA AMS List Reports",
+            "description": {
+              "content": "Returns a list of all available market news reports. Each report has a unique Slug_ID and Slug_Name that serve as identifiers. Reports cover livestock, dairy, fruits, vegetables, grains, cotton, tobacco, poultry, and other agricultural commodities.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "reports"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Search query to filter reports by name or description."
+                },
+                {
+                  "disabled": false,
+                  "key": "allSections",
+                  "value": "<boolean>",
+                  "description": "Return all report sections (true/false)."
+                },
+                {
+                  "disabled": false,
+                  "key": "dateType",
+                  "value": "<string>",
+                  "description": "Date type to filter by (published, report)."
+                },
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<date>",
+                  "description": "Start date for filtering reports (YYYY-MM-DD)."
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<date>",
+                  "description": "End date for filtering reports (YYYY-MM-DD). Maximum 180 days from startDate."
+                },
+                {
+                  "disabled": false,
+                  "key": "slug_id",
+                  "value": "<string>",
+                  "description": "Filter by specific report slug ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "class",
+                  "value": "<string>",
+                  "description": "Filter by commodity class (e.g., Livestock, Dairy, Fruit/Veg)."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Maximum number of records to return (max 100000)."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "Number of records to skip for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "<string>",
+                  "description": "Field to sort results by."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_order",
+                  "value": "<string>",
+                  "description": "Sort order (asc or desc)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "63519fcc-f21a-4c38-81a4-47ca469035d6",
+              "name": "A list of market news reports.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "cattle"
+                    },
+                    {
+                      "key": "allSections",
+                      "value": "true"
+                    },
+                    {
+                      "key": "dateType",
+                      "value": "published"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "2026-01-01"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2026-04-19"
+                    },
+                    {
+                      "key": "slug_id",
+                      "value": "2451"
+                    },
+                    {
+                      "key": "class",
+                      "value": "Livestock"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "published_date"
+                    },
+                    {
+                      "key": "sort_order",
+                      "value": "desc"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"slug_id\": \"2451\",\n      \"slug_name\": \"National Weekly Cattle Summary\",\n      \"report_date\": \"2026-04-18\",\n      \"published_date\": \"2026-04-18T16:00:00Z\",\n      \"commodity\": \"Cattle\",\n      \"market_type\": \"Weekly Summary\",\n      \"office\": \"National\",\n      \"section_name\": \"All Classes\"\n    }\n  ],\n  \"stats\": {\n    \"count\": 1,\n    \"total\": 500\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "05654001-eeb8-4e5e-bb6e-030bdb1a4d84",
+              "name": "Bad request. Invalid query parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "cattle"
+                    },
+                    {
+                      "key": "allSections",
+                      "value": "true"
+                    },
+                    {
+                      "key": "dateType",
+                      "value": "published"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "2026-01-01"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2026-04-19"
+                    },
+                    {
+                      "key": "slug_id",
+                      "value": "2451"
+                    },
+                    {
+                      "key": "class",
+                      "value": "Livestock"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "published_date"
+                    },
+                    {
+                      "key": "sort_order",
+                      "value": "desc"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"invalid_parameter\",\n  \"message\": \"The requested resource was not found.\",\n  \"status\": 404\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1f1cbfa6-1f11-43b1-bc40-ee914e4254b8",
+              "name": "Unauthorized. Invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "cattle"
+                    },
+                    {
+                      "key": "allSections",
+                      "value": "true"
+                    },
+                    {
+                      "key": "dateType",
+                      "value": "published"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "2026-01-01"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2026-04-19"
+                    },
+                    {
+                      "key": "slug_id",
+                      "value": "2451"
+                    },
+                    {
+                      "key": "class",
+                      "value": "Livestock"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "published_date"
+                    },
+                    {
+                      "key": "sort_order",
+                      "value": "desc"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"invalid_parameter\",\n  \"message\": \"The requested resource was not found.\",\n  \"status\": 404\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "99d9f167-b61f-4ce0-9e1f-fbe461b99838",
+          "name": "USDA AMS Get Report",
+          "request": {
+            "name": "USDA AMS Get Report",
+            "description": {
+              "content": "Returns market news data for a specific report identified by its unique slug_id. Returns the full report data including commodity prices, volumes, and trade information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "reports",
+                ":slug_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<date>",
+                  "description": "Start date for filtering data within the report (YYYY-MM-DD)."
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<date>",
+                  "description": "End date for filtering data (YYYY-MM-DD). Maximum 180 days from startDate."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Maximum records to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "Number of records to skip."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "slug_id",
+                  "description": "(Required) Unique identifier (Slug_ID) for the market news report."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fec4b726-52dd-4334-b9f3-8dc3446a906c",
+              "name": "Report data with commodity prices and market information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reports",
+                    ":slug_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "2026-01-01"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2026-04-19"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug_id",
+                      "description": "(Required) Unique identifier (Slug_ID) for the market news report."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"slug_id\": \"2451\",\n      \"slug_name\": \"National Weekly Cattle Summary\",\n      \"report_date\": \"2026-04-18\",\n      \"published_date\": \"2026-04-18T16:00:00Z\",\n      \"commodity\": \"Cattle\",\n      \"class\": \"Slaughter\",\n      \"grade\": \"Choice\",\n      \"head_count\": 45000,\n      \"price_per_cwt\": 185.5,\n      \"price_unit\": \"CWT\",\n      \"region\": \"National\"\n    }\n  ],\n  \"stats\": {\n    \"count\": 1,\n    \"total\": 1\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e46e954b-2ce3-4143-bb06-8c04ca9b68d0",
+              "name": "Report not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reports",
+                    ":slug_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "2026-01-01"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2026-04-19"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug_id",
+                      "description": "(Required) Unique identifier (Slug_ID) for the market news report."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"invalid_parameter\",\n  \"message\": \"The requested resource was not found.\",\n  \"status\": 404\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://marsapi.ams.usda.gov/services/v1.2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b7b1cd3d-be1f-4a0d-b247-4b19f820a10f",
+    "name": "USDA AMS MARS API (MyMarketNews) Offices Reports API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Market Analysis Reporting System (MARS) API provides programmatic access to USDA Agricultural Marketing Service agricultural market news data. The API allows users to automatically pull raw market news data including commodity prices, volume, and trade reports across livestock, dairy, fruits, vegetables, grains, and other agricultural commodities. Authentication via Basic auth with an API key is supported for registered users; no key is required for public access. All responses are in JSON format.",
+      "type": "text/plain"
+    }
+  }
+}

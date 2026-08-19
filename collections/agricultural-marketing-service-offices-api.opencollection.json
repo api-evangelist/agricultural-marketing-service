@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "USDA AMS MARS API (MyMarketNews) Offices API",
+    "version": "v1.2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Offices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "USDA AMS List Offices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://marsapi.ams.usda.gov/services/v1.2/offices"
+          },
+          "docs": "Returns a list of USDA AMS market news offices that publish market reports."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

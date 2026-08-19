@@ -1,0 +1,140 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "USDA AMS MARS API (MyMarketNews) Offices Reports API",
+    "version": "v1.2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "USDA AMS List Reports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://marsapi.ams.usda.gov/services/v1.2/reports",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search query to filter reports by name or description."
+              },
+              {
+                "name": "allSections",
+                "value": "",
+                "type": "query",
+                "description": "Return all report sections (true/false)."
+              },
+              {
+                "name": "dateType",
+                "value": "",
+                "type": "query",
+                "description": "Date type to filter by (published, report)."
+              },
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query",
+                "description": "Start date for filtering reports (YYYY-MM-DD)."
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query",
+                "description": "End date for filtering reports (YYYY-MM-DD). Maximum 180 days from startDate."
+              },
+              {
+                "name": "slug_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by specific report slug ID."
+              },
+              {
+                "name": "class",
+                "value": "",
+                "type": "query",
+                "description": "Filter by commodity class (e.g., Livestock, Dairy, Fruit/Veg)."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return (max 100000)."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination."
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort results by."
+              },
+              {
+                "name": "sort_order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order (asc or desc)."
+              }
+            ]
+          },
+          "docs": "Returns a list of all available market news reports. Each report has a unique Slug_ID and Slug_Name that serve as identifiers. Reports cover livestock, dairy, fruits, vegetables, grains, cotton, tobacco, poultry, and other agricultural commodities."
+        },
+        {
+          "info": {
+            "name": "USDA AMS Get Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://marsapi.ams.usda.gov/services/v1.2/reports/:slug_id",
+            "params": [
+              {
+                "name": "slug_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (Slug_ID) for the market news report."
+              },
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query",
+                "description": "Start date for filtering data within the report (YYYY-MM-DD)."
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query",
+                "description": "End date for filtering data (YYYY-MM-DD). Maximum 180 days from startDate."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum records to return."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip."
+              }
+            ]
+          },
+          "docs": "Returns market news data for a specific report identified by its unique slug_id. Returns the full report data including commodity prices, volumes, and trade information."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
