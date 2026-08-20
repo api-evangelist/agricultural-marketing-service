@@ -18,6 +18,15 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/agricultural-marketing-service.png
 tags:
   - Agriculture
+  - Federal-Government
+  - Market News
+  - Livestock
+  - Dairy
+  - Fruits And Vegetables
+  - Cotton
+  - Tobacco
+tags_raw:
+  - Agriculture
   - Federal Government
   - Market News
   - Livestock
