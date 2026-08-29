@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: USDA AMS MARS API (MyMarketNews) Offices Reports API
   description: The Market Analysis Reporting System (MARS) API provides programmatic access to USDA Agricultural Marketing Service agricultural market news data. The API allows users to automatically pull raw market news data including commodity prices, volume, and trade reports across livestock, dairy, fruits, vegetables, grains, and other agricultural commodities. Authentication via Basic auth with an API key is supported for registered users; no key is required for public access. All responses are in JSON format.
@@ -233,6 +233,34 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    ReportDataResponse:
+      type: object
+      title: Report Data Response
+      description: Response containing detailed report data.
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReportData'
+        stats:
+          $ref: '#/components/schemas/PaginationStats'
+    ErrorResponse:
+      type: object
+      title: Error Response
+      description: Standard error response from the MARS API.
+      properties:
+        error:
+          type: string
+          description: Error type or code.
+          example: invalid_parameter
+        message:
+          type: string
+          description: Human-readable error message.
+          example: The requested resource was not found.
+        status:
+          type: integer
+          description: HTTP status code.
+          example: 404
     Report:
       type: object
       title: Report
@@ -272,23 +300,6 @@ components:
           type: string
           description: Section name within the report.
           example: All Classes
-    ErrorResponse:
-      type: object
-      title: Error Response
-      description: Standard error response from the MARS API.
-      properties:
-        error:
-          type: string
-          description: Error type or code.
-          example: invalid_parameter
-        message:
-          type: string
-          description: Human-readable error message.
-          example: The requested resource was not found.
-        status:
-          type: integer
-          description: HTTP status code.
-          example: 404
     ReportsListResponse:
       type: object
       title: Reports List Response
@@ -298,17 +309,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Report'
-        stats:
-          $ref: '#/components/schemas/PaginationStats'
-    ReportDataResponse:
-      type: object
-      title: Report Data Response
-      description: Response containing detailed report data.
-      properties:
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/ReportData'
         stats:
           $ref: '#/components/schemas/PaginationStats'
     PaginationStats:
