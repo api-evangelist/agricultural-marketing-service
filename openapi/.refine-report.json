@@ -1,8 +1,7 @@
 {
   "provider": "agricultural-marketing-service",
   "sources": [
-    "agricultural-marketing-service-offices-api-openapi.yml",
-    "agricultural-marketing-service-reports-api-openapi.yml"
+    "_ae-authored/agricultural-marketing-service-mars-api.yaml"
   ],
   "outputs": [
     "agricultural-marketing-service-offices-api-openapi.yml",
@@ -12,7 +11,12 @@
   "errors": [],
   "warnings": [],
   "notes": [
+    "sourced from openapi/_original/ (0 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "agricultural-marketing-service-mars-api.yaml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "agricultural-marketing-service-offices-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "agricultural-marketing-service-reports-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

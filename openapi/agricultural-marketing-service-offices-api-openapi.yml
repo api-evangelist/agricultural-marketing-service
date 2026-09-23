@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
   title: USDA AMS MARS API (MyMarketNews) Offices API
-  description: The Market Analysis Reporting System (MARS) API provides programmatic access to USDA Agricultural Marketing Service agricultural market news data. The API allows users to automatically pull raw market news data including commodity prices, volume, and trade reports across livestock, dairy, fruits, vegetables, grains, and other agricultural commodities. Authentication via Basic auth with an API key is supported for registered users; no key is required for public access. All responses are in JSON format.
+  description: The Market Analysis Reporting System (MARS) API provides programmatic access to USDA Agricultural Marketing Service agricultural market news data.
   version: v1.2
   contact:
     url: https://mymarketnews.ams.usda.gov

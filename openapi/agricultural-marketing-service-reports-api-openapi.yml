@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
-  title: USDA AMS MARS API (MyMarketNews) Offices Reports API
-  description: The Market Analysis Reporting System (MARS) API provides programmatic access to USDA Agricultural Marketing Service agricultural market news data. The API allows users to automatically pull raw market news data including commodity prices, volume, and trade reports across livestock, dairy, fruits, vegetables, grains, and other agricultural commodities. Authentication via Basic auth with an API key is supported for registered users; no key is required for public access. All responses are in JSON format.
+  title: USDA AMS MARS API (MyMarketNews) Reports API
+  description: The Market Analysis Reporting System (MARS) API provides programmatic access to USDA Agricultural Marketing Service agricultural market news data.
   version: v1.2
   contact:
     url: https://mymarketnews.ams.usda.gov
@@ -233,34 +233,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ReportDataResponse:
-      type: object
-      title: Report Data Response
-      description: Response containing detailed report data.
-      properties:
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/ReportData'
-        stats:
-          $ref: '#/components/schemas/PaginationStats'
-    ErrorResponse:
-      type: object
-      title: Error Response
-      description: Standard error response from the MARS API.
-      properties:
-        error:
-          type: string
-          description: Error type or code.
-          example: invalid_parameter
-        message:
-          type: string
-          description: Human-readable error message.
-          example: The requested resource was not found.
-        status:
-          type: integer
-          description: HTTP status code.
-          example: 404
     Report:
       type: object
       title: Report
@@ -311,19 +283,34 @@ components:
             $ref: '#/components/schemas/Report'
         stats:
           $ref: '#/components/schemas/PaginationStats'
-    PaginationStats:
+    ErrorResponse:
       type: object
-      title: Pagination Stats
-      description: Pagination metadata for list responses.
+      title: Error Response
+      description: Standard error response from the MARS API.
       properties:
-        count:
+        error:
+          type: string
+          description: Error type or code.
+          example: invalid_parameter
+        message:
+          type: string
+          description: Human-readable error message.
+          example: The requested resource was not found.
+        status:
           type: integer
-          description: Number of records in this response.
-          example: 100
-        total:
-          type: integer
-          description: Total number of records matching the query.
-          example: 500
+          description: HTTP status code.
+          example: 404
+    ReportDataResponse:
+      type: object
+      title: Report Data Response
+      description: Response containing detailed report data.
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReportData'
+        stats:
+          $ref: '#/components/schemas/PaginationStats'
     ReportData:
       type: object
       title: Report Data
@@ -376,6 +363,19 @@ components:
           type: string
           description: Geographic region covered.
           example: National
+    PaginationStats:
+      type: object
+      title: Pagination Stats
+      description: Pagination metadata for list responses.
+      properties:
+        count:
+          type: integer
+          description: Number of records in this response.
+          example: 100
+        total:
+          type: integer
+          description: Total number of records matching the query.
+          example: 500
   securitySchemes:
     BasicAuth:
       type: http
