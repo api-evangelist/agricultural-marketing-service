@@ -49,6 +49,15 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    OfficesListResponse:
+      type: object
+      title: Offices List Response
+      description: List of USDA AMS market news offices.
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Office'
     Office:
       type: object
       title: Office
@@ -79,15 +88,6 @@ components:
           - Cattle
           - Hogs
           - Dairy
-    OfficesListResponse:
-      type: object
-      title: Offices List Response
-      description: List of USDA AMS market news offices.
-      properties:
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Office'
   securitySchemes:
     BasicAuth:
       type: http

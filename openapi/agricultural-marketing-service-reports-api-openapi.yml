@@ -233,6 +233,34 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      title: Error Response
+      description: Standard error response from the MARS API.
+      properties:
+        error:
+          type: string
+          description: Error type or code.
+          example: invalid_parameter
+        message:
+          type: string
+          description: Human-readable error message.
+          example: The requested resource was not found.
+        status:
+          type: integer
+          description: HTTP status code.
+          example: 404
+    ReportDataResponse:
+      type: object
+      title: Report Data Response
+      description: Response containing detailed report data.
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReportData'
+        stats:
+          $ref: '#/components/schemas/PaginationStats'
     Report:
       type: object
       title: Report
@@ -272,23 +300,30 @@ components:
           type: string
           description: Section name within the report.
           example: All Classes
-    ErrorResponse:
+    ReportsListResponse:
       type: object
-      title: Error Response
-      description: Standard error response from the MARS API.
+      title: Reports List Response
+      description: Paginated list of market news reports.
       properties:
-        error:
-          type: string
-          description: Error type or code.
-          example: invalid_parameter
-        message:
-          type: string
-          description: Human-readable error message.
-          example: The requested resource was not found.
-        status:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Report'
+        stats:
+          $ref: '#/components/schemas/PaginationStats'
+    PaginationStats:
+      type: object
+      title: Pagination Stats
+      description: Pagination metadata for list responses.
+      properties:
+        count:
           type: integer
-          description: HTTP status code.
-          example: 404
+          description: Number of records in this response.
+          example: 100
+        total:
+          type: integer
+          description: Total number of records matching the query.
+          example: 500
     ReportData:
       type: object
       title: Report Data
@@ -341,41 +376,6 @@ components:
           type: string
           description: Geographic region covered.
           example: National
-    ReportDataResponse:
-      type: object
-      title: Report Data Response
-      description: Response containing detailed report data.
-      properties:
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/ReportData'
-        stats:
-          $ref: '#/components/schemas/PaginationStats'
-    ReportsListResponse:
-      type: object
-      title: Reports List Response
-      description: Paginated list of market news reports.
-      properties:
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Report'
-        stats:
-          $ref: '#/components/schemas/PaginationStats'
-    PaginationStats:
-      type: object
-      title: Pagination Stats
-      description: Pagination metadata for list responses.
-      properties:
-        count:
-          type: integer
-          description: Number of records in this response.
-          example: 100
-        total:
-          type: integer
-          description: Total number of records matching the query.
-          example: 500
   securitySchemes:
     BasicAuth:
       type: http
