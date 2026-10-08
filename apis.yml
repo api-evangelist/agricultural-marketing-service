@@ -144,6 +144,12 @@ apis:
       - type: DataAPI
         url: https://mpr.datamart.ams.usda.gov/
 common:
+  - type: Plans
+    url: plans/agricultural-marketing-service-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/agricultural-marketing-service-rate-limits.yml
+  - type: FinOps
+    url: finops/agricultural-marketing-service-finops.yml
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/agricultural-marketing-service/overview
   - type: AgenticAccess
