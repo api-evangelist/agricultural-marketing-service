@@ -1,4 +1,4 @@
-# Agricultural Marketing Service (agricultural-marketing-service)
+# Agricultural Marketing Service
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,143 +66,180 @@
 
 The Agricultural Marketing Service (AMS), an agency of the United States Department of Agriculture (USDA), oversees programs in five commodity areas: cotton and tobacco, dairy, fruits and vegetables, livestock and seeds, and poultry. AMS provides testing, standardization, grading, and market news services. AMS operates several public APIs for agricultural market data including the Market Analysis Reporting System (MARS) API for real-time commodity market news and the Livestock Mandatory Price Reporting System (LMPRS) API for livestock price data.
 
-**URL:** [https://www.ams.usda.gov/](https://www.ams.usda.gov/)
+**Areas:** Agriculture · Federal Government · Market News · Livestock · Dairy · Fruits And Vegetables · Cotton · Tobacco
 
-**Run:** [Capabilities Using Naftiko](https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=company-api-evangelist&utm_content=repo)
+## Agricultural Marketing Service on APIs.io
 
-## Tags:
+Everything profiled for Agricultural Marketing Service is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/agricultural-marketing-service/](https://apis.io/providers/agricultural-marketing-service/)** — or go straight to one of the APIs or properties below.
 
- - Agriculture, Federal Government, Market News, Livestock, Dairy, Fruits And Vegetables, Cotton, Tobacco
+### APIs (4)
 
-## Timestamps
+- [USDA Local Food Directories API](https://apis.io/apis/agricultural-marketing-service/usda-local-food-directories-api/) — The USDA Local Food Directories API provides data sharing access to directory information for farmers markets, food hubs, on-farm markets, community…
+- [Agricultural Marketing Service Offices API](https://apis.io/apis/agricultural-marketing-service/agricultural-marketing-service-offices-api/) — USDA AMS market news offices
+- [Agricultural Marketing Service Reports API](https://apis.io/apis/agricultural-marketing-service/agricultural-marketing-service-reports-api/) — Agricultural market news reports across all commodity types
+- [USDA AMS LMPRS API (Livestock Mandatory Price Reporting)](https://apis.io/apis/agricultural-marketing-service/usda-ams-lmprs-api-livestock-mandatory-price-reporting/) — The Livestock Mandatory Price Reporting System (LMPRS) API provides programmatic access to federally mandated livestock price report data. The API requires…
 
-- **Created:** 2024-11-21
-- **Modified:** 2026-04-19
+### Published properties
 
-## APIs
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-### USDA AMS MARS API (MyMarketNews)
-The Market Analysis Reporting System (MARS) API provides programmatic access to USDA AMS agricultural market news data. The API allows users to automatically pull raw market news data including commodity prices, volume, and trade reports across livestock, dairy, fruits, vegetables, grains, and other agricultural commodities. No API key is required for basic access; registered users can obtain an API key for higher rate limits.
+#### Agentic access (1)
 
-**Human URL:** [https://mymarketnews.ams.usda.gov/mymarketnews-api](https://mymarketnews.ams.usda.gov/mymarketnews-api)
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags:
+- [Agricultural Marketing Service Agentic Access](https://apis.io/agentic-access/agricultural-marketing-service/agricultural-marketing-service-agentic-access/)
 
- - Market News, Commodity Prices, Agriculture, Livestock, Dairy, Fruits And Vegetables
+#### JSON Schema (8)
 
-#### Properties
+The data models the API reads and writes.
 
-- [Documentation](https://mymarketnews.ams.usda.gov/mymarketnews-api)
-- [Getting Started](https://mymarketnews.ams.usda.gov/mars-api/getting-started)
-- [Authentication](https://mymarketnews.ams.usda.gov/mymarketnews-api/authentication)
-- [OpenAPI](openapi/agricultural-marketing-service-mars-api.yaml)
-- [Report Schema](json-schema/mars-api-report-schema.json)
-- [Report Data Schema](json-schema/mars-api-report-data-schema.json)
-- [Office Schema](json-schema/mars-api-office-schema.json)
-- [Report Structure](json-structure/mars-api-report-structure.json)
-- [Report Data Structure](json-structure/mars-api-report-data-structure.json)
-- [JSON-LD Context](json-ld/agricultural-marketing-service-mars-api-context.jsonld)
+- [Error Response](https://apis.io/schemas/agricultural-marketing-service/mars-api-error-response/)
+- [Office](https://apis.io/schemas/agricultural-marketing-service/mars-api-office/)
+- [Offices List Response](https://apis.io/schemas/agricultural-marketing-service/mars-api-offices-list-response/)
+- [Pagination Stats](https://apis.io/schemas/agricultural-marketing-service/mars-api-pagination-stats/)
+- [Report](https://apis.io/schemas/agricultural-marketing-service/mars-api-report/)
+- [Report Data](https://apis.io/schemas/agricultural-marketing-service/mars-api-report-data/)
+- [Report Data Response](https://apis.io/schemas/agricultural-marketing-service/mars-api-report-data-response/)
+- [Reports List Response](https://apis.io/schemas/agricultural-marketing-service/mars-api-reports-list-response/)
 
+#### JSON Structure (8)
 
-#### Tags:
+Data models expressed in JSON Structure.
 
- - Livestock, Price Reporting, Cattle, Hogs, Agriculture
+- [Mars Api Error Response Structure](https://apis.io/json-structure/agricultural-marketing-service/mars-api-error-response-structure/)
+- [Mars Api Office Structure](https://apis.io/json-structure/agricultural-marketing-service/mars-api-office-structure/)
+- [Mars Api Offices List Response Structure](https://apis.io/json-structure/agricultural-marketing-service/mars-api-offices-list-response-structure/)
+- [Mars Api Pagination Stats Structure](https://apis.io/json-structure/agricultural-marketing-service/mars-api-pagination-stats-structure/)
+- [Mars Api Report Data Response Structure](https://apis.io/json-structure/agricultural-marketing-service/mars-api-report-data-response-structure/)
+- [Mars Api Report Data Structure](https://apis.io/json-structure/agricultural-marketing-service/mars-api-report-data-structure/)
+- [Mars Api Report Structure](https://apis.io/json-structure/agricultural-marketing-service/mars-api-report-structure/)
+- [Mars Api Reports List Response Structure](https://apis.io/json-structure/agricultural-marketing-service/mars-api-reports-list-response-structure/)
 
-#### Properties
+#### JSON-LD (1)
 
-- [LMPRS API User Guide](https://www.ams.usda.gov/sites/default/files/media/USDA_LMPRS_API_User_Guide.pdf)
-- [Data API](https://mpr.datamart.ams.usda.gov/)
+Linked-data contexts for the provider's vocabulary.
 
-### USDA Local Food Directories API
-The USDA Local Food Directories API provides data sharing access to directory information for farmers markets, food hubs, on-farm markets, community supported agriculture (CSA) operations, and food cooperatives across the United States.
+- [Agricultural Marketing Service Mars Api Context](https://apis.io/jsonld/agricultural-marketing-service/agricultural-marketing-service-mars-api-context/)
 
-**Human URL:** [https://www.usdalocalfoodportal.com/fe/datasharing/](https://www.usdalocalfoodportal.com/fe/datasharing/)
+#### Vocabulary (1)
 
-#### Tags:
+The provider's domain terms, defined.
 
- - Local Food, Farmers Markets, Food Hubs, CSA, Agriculture
+- [Agricultural Marketing Service Vocabulary](https://apis.io/vocabularies/agricultural-marketing-service/agricultural-marketing-service-vocabulary/)
 
-#### Properties
+#### Examples (8)
 
-- [Documentation](https://www.usdalocalfoodportal.com/fe/datasharing/)
-- [Data API](https://www.usdalocalfoodportal.com/api/)
+Example requests and responses.
 
-## Common Properties
+- [Mars Api Error Response Example](https://apis.io/examples/agricultural-marketing-service/mars-api-error-response-example/)
+- [Mars Api Office Example](https://apis.io/examples/agricultural-marketing-service/mars-api-office-example/)
+- [Mars Api Offices List Response Example](https://apis.io/examples/agricultural-marketing-service/mars-api-offices-list-response-example/)
+- [Mars Api Pagination Stats Example](https://apis.io/examples/agricultural-marketing-service/mars-api-pagination-stats-example/)
+- [Mars Api Report Data Example](https://apis.io/examples/agricultural-marketing-service/mars-api-report-data-example/)
+- [Mars Api Report Data Response Example](https://apis.io/examples/agricultural-marketing-service/mars-api-report-data-response-example/)
+- [Mars Api Report Example](https://apis.io/examples/agricultural-marketing-service/mars-api-report-example/)
+- [Mars Api Reports List Response Example](https://apis.io/examples/agricultural-marketing-service/mars-api-reports-list-response-example/)
+
+#### Collections (4)
+
+Postman and Open Collection request collections.
+
+- [USDA AMS MARS API (MyMarketNews) Offices API](https://apis.io/collections/agricultural-marketing-service/open-agricultural-marketing-service-offices-api/)
+- [USDA AMS MARS API (MyMarketNews) Offices Reports API](https://apis.io/collections/agricultural-marketing-service/open-agricultural-marketing-service-reports-api/)
+- [USDA AMS MARS API (MyMarketNews) Offices API](https://apis.io/collections/agricultural-marketing-service/postman-agricultural-marketing-service-offices-api/)
+- [USDA AMS MARS API (MyMarketNews) Offices Reports API](https://apis.io/collections/agricultural-marketing-service/postman-agricultural-marketing-service-reports-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Agricultural Marketing Service — jsonschema rules](https://apis.io/rules/agricultural-marketing-service/agricultural-marketing-service-jsonschema-spectral-rules/)
+- [Agricultural Marketing Service API Rules](https://apis.io/rules/agricultural-marketing-service/agricultural-marketing-service-spectral-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Agricultural Marketing Service Authentication](https://apis.io/security/agricultural-marketing-service/agricultural-marketing-service-authentication/)
+- [Agricultural Marketing Service Domain Security](https://apis.io/security/agricultural-marketing-service/agricultural-marketing-service-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Agricultural Marketing Service Plans Pricing](https://apis.io/plans/agricultural-marketing-service/agricultural-marketing-service-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Agricultural Marketing Service Rate Limits](https://apis.io/rate-limits/agricultural-marketing-service/agricultural-marketing-service-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Agricultural Marketing Service Finops](https://apis.io/finops/agricultural-marketing-service/agricultural-marketing-service-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.ams.usda.gov/)
-- [APIs and Open Data Portal](https://www.ams.usda.gov/resources/apis-open-data)
-- [GitHub Organization](https://github.com/usda)
-- [Terms of Service](https://www.usda.gov/policies-and-links)
-- [Privacy Policy](https://www.usda.gov/privacy-policy)
+- [Blog](https://www.ams.usda.gov/rss.xml)
+- [Terms of service](https://www.usda.gov/policies-and-links)
+- [Privacy policy](https://www.usda.gov/privacy-policy)
+- [GitHub](https://github.com/usda)
 
-## Features
+## API Evangelist rating
 
-| Name | Description |
-|------|-------------|
-| No Authentication Required | The MARS and LMPRS APIs are publicly accessible without authentication; registered users can obtain API keys for higher rate limits. |
-| JSON Data Format | All API responses are returned in JSON format including errors and paginated results. |
-| Real-Time Market News | MARS API provides up-to-date commodity price and volume data as reports are released by AMS market reporters. |
-| Historical Data Access | Access up to 180 days of historical market data per request with up to 100,000 records returned per call. |
-| Commodity Coverage | Market data covers livestock, dairy, fruits, vegetables, grains, cotton, tobacco, poultry, and other agricultural commodities. |
-| Mandatory Price Reporting | LMPRS API provides federally mandated livestock price data under the Livestock Mandatory Reporting Act. |
+**Kin Score 33.1** — thin · rubric 0.24.0 · scored 2026-10-17
 
-## Use Cases
+| Facet | Score |
+|---|---|
+| Discoverability | 71.4 |
+| Contract quality | 28.0 |
+| Contract governance | 27.3 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 34.5 |
+| Access clarity | 28.9 |
 
-| Name | Description |
-|------|-------------|
-| Agricultural Price Monitoring | Track commodity prices across livestock, dairy, fruits, and vegetables to support trading, purchasing, and production decisions. |
-| Market Analysis and Research | Pull historical and current market news data for academic research, economic analysis, and policy work. |
-| Supply Chain Integration | Integrate USDA market news data into supply chain management and procurement systems for real-time pricing. |
-| Local Food System Mapping | Use the Local Food Directories API to locate and integrate data about farmers markets, CSAs, and food hubs. |
-| Commodity Price Alerts | Build automated price monitoring systems using the MARS API to trigger alerts when prices cross defined thresholds. |
+**Agent readiness 33.2** — agent-ready
 
-## Integrations
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | na |
+| Error Semantics | verified |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
 
-| Name | Description |
-|------|-------------|
-| Microsoft Excel | USDA AMS provides guides for integrating MARS API data directly into Microsoft Excel for market analysis. |
-| api.data.gov | AMS APIs are accessible through the federal api.data.gov gateway for consistent API key management. |
+**Regulatory alignment 24.5** — Government & Public Sector
 
-## Artifacts
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/agricultural-marketing-service/](https://apis.io/providers/agricultural-marketing-service/).
 
-Machine-readable API specifications organized by format.
+## How this profile is made
 
-### OpenAPI
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
 
-- [USDA AMS MARS API](openapi/agricultural-marketing-service-mars-api.yaml)
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Agricultural Marketing Service: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
 
-### JSON Schema
+## Open an issue
 
-- [Report Schema](json-schema/mars-api-report-schema.json)
-- [Reports List Response Schema](json-schema/mars-api-reports-list-response-schema.json)
-- [Report Data Schema](json-schema/mars-api-report-data-schema.json)
-- [Report Data Response Schema](json-schema/mars-api-report-data-response-schema.json)
-- [Office Schema](json-schema/mars-api-office-schema.json)
-- [Offices List Response Schema](json-schema/mars-api-offices-list-response-schema.json)
-- [Pagination Stats Schema](json-schema/mars-api-pagination-stats-schema.json)
-- [Error Response Schema](json-schema/mars-api-error-response-schema.json)
-
-### JSON Structure
-
-- [Report Structure](json-structure/mars-api-report-structure.json)
-- [Report Data Structure](json-structure/mars-api-report-data-structure.json)
-- [Office Structure](json-structure/mars-api-office-structure.json)
-- [Error Response Structure](json-structure/mars-api-error-response-structure.json)
-
-### JSON-LD
-
-- [MARS API Context](json-ld/agricultural-marketing-service-mars-api-context.jsonld)
-
-## Vocabulary
-
-- [Agricultural Marketing Service Vocabulary](vocabulary/agricultural-marketing-service-vocabulary.yaml) — Unified taxonomy mapping 2 resources, 2 actions, 0 workflows, and 3 personas across operational (OpenAPI) and capability (Naftiko) dimensions
-
-## Rules
-
-- [Agricultural Marketing Service Spectral Rules](rules/agricultural-marketing-service-spectral-rules.yml) — 22 rules across 9 categories enforcing USDA AMS API conventions
-
-## Maintainers
-
-**FN:** Kin Lane
-
-**Email:** kin@apievangelist.com
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/agricultural-marketing-service/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
