@@ -149,6 +149,14 @@ Postman and Open Collection request collections.
 - [USDA AMS MARS API (MyMarketNews) Offices API](https://apis.io/collections/agricultural-marketing-service/postman-agricultural-marketing-service-offices-api/)
 - [USDA AMS MARS API (MyMarketNews) Offices Reports API](https://apis.io/collections/agricultural-marketing-service/postman-agricultural-marketing-service-reports-api/)
 
+#### Overlays (3)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Agricultural Marketing Service Mars Api Certification Overlay](https://apis.io/overlays/agricultural-marketing-service/agricultural-marketing-service-mars-api-certification-overlay/)
+- [Agricultural Marketing Service Offices Api Certification Overlay](https://apis.io/overlays/agricultural-marketing-service/agricultural-marketing-service-offices-api-certification-overlay/)
+- [Agricultural Marketing Service Reports Api Certification Overlay](https://apis.io/overlays/agricultural-marketing-service/agricultural-marketing-service-reports-api-certification-overlay/)
+
 #### Governance rules (2)
 
 Spectral rulesets for the provider's contracts.
@@ -193,18 +201,18 @@ Links to the company's own pages. This repository publishes no copy of their spe
 
 ## API Evangelist rating
 
-**Kin Score 33.1** — thin · rubric 0.24.0 · scored 2026-10-17
+**Kin Score 31.3** — thin · rubric 0.28.1 · scored 2026-11-21
 
 | Facet | Score |
 |---|---|
 | Discoverability | 71.4 |
 | Contract quality | 28.0 |
 | Contract governance | 27.3 |
-| Operational transparency | 10.5 |
+| Operational transparency | 11.9 |
 | Developer ergonomics | 34.5 |
-| Access clarity | 28.9 |
+| Access clarity | 23.4 |
 
-**Agent readiness 33.2** — agent-ready
+**Agent readiness 29.3** — agent-ready
 
 | Agent-readiness dimension | Result |
 |---|---|
@@ -214,7 +222,7 @@ Links to the company's own pages. This repository publishes no copy of their spe
 | MCP Server | — |
 | Auth Clarity | bearer (partial credit) |
 | Idempotency | na |
-| Error Semantics | verified |
+| Error Semantics | derived (partial credit) |
 | OpenAPI Examples | verified |
 | Rate Limit Signal | derived (partial credit) |
 | Event Surface Described | — |
@@ -227,8 +235,14 @@ Links to the company's own pages. This repository publishes no copy of their spe
 | Protected Resource Metadata | — |
 | Dynamic Client Registration | — |
 | Agentic Commerce | — |
+| Pagination Ratio | partial |
+| Operation Distinctiveness | distinct |
+| MCP Tool Quality | na |
+| Onboarding Descriptor | — |
+| Dns Aid Index | na |
+| Markdown Negotiation | na |
 
-**Regulatory alignment 24.5** — Government & Public Sector
+**Regulatory alignment 18.6** — Government & Public Sector
 
 The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/agricultural-marketing-service/](https://apis.io/providers/agricultural-marketing-service/).
 
